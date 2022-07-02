@@ -26,7 +26,7 @@ namespace Base
 
             public void LookAtDirection()
             {
-                if (LevelManager.Instance.IsLevelStarted)
+                if (LevelManager.Instance.IsLevelStarted && CharacterStateController.StateInfos[2].Value == false)
                 {
                     transform.LookAt(transform.position + CharacterMovementController.DirectionData());
                 }

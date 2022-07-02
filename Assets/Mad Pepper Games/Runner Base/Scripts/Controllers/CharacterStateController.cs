@@ -8,8 +8,13 @@ namespace Base
     {
         public class CharacterStateController : MonoBehaviour
         {
+            private Rigidbody _rb;
+            public Rigidbody _Rb { get { return (_rb == null) ? _rb = GetComponent<Rigidbody>() : _rb; } }
+
             [ShowInInspector]
             public List<StateInfo> StateInfos = new List<StateInfo>();
+
+            public bool IsRunning;
             private void Awake()
             {
                 foreach (CharacterState characterState in System.Enum.GetValues(typeof(CharacterState)))
@@ -18,12 +23,27 @@ namespace Base
                 }
             }
 
+            private void OnEnable()
+            {
+                LevelManager.Instance.OnLevelStarted.AddListener(()=> IsRunning = true);
+            }
+
+            private void OnDisable()
+            {
+                LevelManager.Instance.OnLevelStarted.RemoveListener(()=> IsRunning = true);
+            }
+
+            private void Update()
+            {
+               StateInfos[1].Value = IsRunning;
+            }
+
             public enum CharacterState
             {             
                 Idle,
                 Running,
-                Jumping,
-                Hitting,
+                Falling,
+                Throwing,
                 Dying
             }
         }

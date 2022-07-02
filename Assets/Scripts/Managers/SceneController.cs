@@ -33,7 +33,11 @@ public class SceneController : Singleton<SceneController>
         yield return SceneManager.LoadSceneAsync(level.LevelID, LoadSceneMode.Additive);
 
         if (level.LevelID.Contains("Level"))
+        {
             OnSceneLoaded.Invoke();
+            InputManager.Instance.Joystick.enabled = true;
+        }
+            
     }
     public void UnloadLevel(Level level)
     {

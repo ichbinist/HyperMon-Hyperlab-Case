@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Mad Pepper Games/Runner Base/Demo/Level - Runner Demo Scene.unity
     guid: 984cbd402db47ef4da4da22ed6f40d4f
+  - enabled: 1
+    path: Assets/Scenes/Level - 1.unity
+    guid: 5cc349cb55ac8af48a7db07ff3e40809
   m_configObjects: {}

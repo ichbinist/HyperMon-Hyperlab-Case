@@ -15,6 +15,9 @@ namespace Base
 
             private CharacterSettings characterSettings;
             public CharacterSettings CharacterSettings { get { return (characterSettings == null) ? characterSettings = GetComponent<CharacterSettings>() : characterSettings; } }
+            
+            private CharacterStateController characterStateController;
+            public CharacterStateController CharacterStateController { get { return (characterStateController == null) ? characterStateController = GetComponent<CharacterStateController>() : characterStateController; } }
 
             private Rigidbody _rb;
             public Rigidbody _Rb { get { return (_rb == null) ? _rb = GetComponent<Rigidbody>() : _rb; } }
@@ -29,13 +32,13 @@ namespace Base
             
             private void Move()
             {
-                transform.position = transform.position + DirectionData() * CharacterSettings.RunningSpeed;
+                transform.position = transform.position + DirectionData() * CharacterSettings.RunningSpeed * Time.deltaTime;
                 transform.position = new Vector3(Mathf.Clamp(transform.position.x, CharacterSettings.RunnerPlatformBoundaries.x, CharacterSettings.RunnerPlatformBoundaries.y), transform.position.y, transform.position.z);
             }
 
-            private void FixedUpdate()
+            private void Update()
             {
-                if (LevelManager.Instance.IsLevelStarted)
+                if (LevelManager.Instance.IsLevelStarted && CharacterStateController.StateInfos[2].Value == false)
                 {
                     Move();
                 }

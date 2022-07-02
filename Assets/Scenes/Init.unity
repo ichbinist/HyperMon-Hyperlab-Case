@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.04615834, g: 0.5532154, b: 0.8302262, a: 1}
+  m_IndirectSpecularColor: {r: 0.95749396, g: 0.38756746, b: 0.004547499, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -139,6 +139,8 @@ GameObject:
   - component: {fileID: 113075785}
   - component: {fileID: 113075791}
   - component: {fileID: 113075793}
+  - component: {fileID: 113075792}
+  - component: {fileID: 113075794}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -208,8 +210,8 @@ MonoBehaviour:
       m_Calls: []
   Levels:
   - LevelType: 0
-    LevelID: Level - Runner Demo Scene
-    BackgroundColor: {r: 0, g: 0.7764706, b: 1, a: 1}
+    LevelID: Level - 1
+    BackgroundColor: {r: 0.972549, g: 0.77254903, b: 0.07058824, a: 1}
   CurrentLevel:
     LevelType: 0
     LevelID: 
@@ -266,6 +268,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Panels: []
+--- !u!114 &113075792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113075784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 590682badf5fba443803713786fd9a6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentCharacter: {fileID: 0}
 --- !u!114 &113075793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,3 +294,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BackgroundMaterial: {fileID: 2100000, guid: 959f96f9c6985474383fb44f604286ad, type: 2}
+--- !u!114 &113075794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113075784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95eb07d2596d45a4ca9562715128480d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PokemonDictionary:
+    keyData: 00000000010000000200000003000000
+    valueData:
+    - Name: Shadow
+      Rarity: EPIC
+      Power: 18
+      Cost: 750
+      BackgroundColor: {r: 1, g: 0, b: 0.29612732, a: 1}
+      PokemonImage: {fileID: 21300000, guid: 285014ab5a8b18a449d555e5155bfa6b, type: 3}
+      PokemonPrefab: {fileID: 4787254703788047845, guid: b31ec81955230df49acd108014d74b0a, type: 3}
+    - Name: Shade
+      Rarity: BASIC
+      Power: 6
+      Cost: 300
+      BackgroundColor: {r: 0, g: 0.5283019, b: 0.24581727, a: 1}
+      PokemonImage: {fileID: 21300000, guid: ca54818419884954999b94ca33bd00dd, type: 3}
+      PokemonPrefab: {fileID: 6769122062881848154, guid: 892ac63fa44b3dd4e89eebf4689425a5, type: 3}
+    - Name: Phantom
+      Rarity: NORMAL
+      Power: 12
+      Cost: 450
+      BackgroundColor: {r: 0.7735849, g: 0.6704566, b: 0, a: 1}
+      PokemonImage: {fileID: 21300000, guid: b0ffec42f4e671e4a9c01d9b3bd2b5b2, type: 3}
+      PokemonPrefab: {fileID: 2698307424242238444, guid: 18860dc2e7680f543975fcd9e4e18d26, type: 3}
+    - Name: Bat Lord
+      Rarity: ULTRA EPIC
+      Power: 24
+      Cost: 1200
+      BackgroundColor: {r: 0.71550894, g: 0, b: 1, a: 1}
+      PokemonImage: {fileID: 21300000, guid: 60dc76c4ccf744d428145fbb34fa14b2, type: 3}
+      PokemonPrefab: {fileID: 4964066896396987770, guid: f5765750cf1df5d47a13520b2425867b, type: 3}
+  CurrentPickedPokemons: 

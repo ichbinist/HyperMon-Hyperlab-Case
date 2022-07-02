@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using TMPro;
 
 namespace Base
 {
@@ -9,10 +10,18 @@ namespace Base
     {
         public class CharacterSettings : MonoBehaviour
         {
-            //Character Settings
-
+            private CharacterStateController characterStateController;
+            public CharacterStateController CharacterStateController { get { return (characterStateController == null) ? characterStateController = GetComponent<CharacterStateController>() : characterStateController; } }
             
+            private CharacterMovementController characterMovementController;
+            public CharacterMovementController CharacterMovementController { get { return (characterMovementController == null) ? characterMovementController = GetComponent<CharacterMovementController>() : characterMovementController; } }
 
+            public PokemonGridController PokemonGridController;
+
+            public TextMeshProUGUI PokeballText;
+            public int PokeballCount;
+
+            //Character Settings
             [FoldoutGroup("Basic Settings")]
             public float RunningSpeed;
             [FoldoutGroup("Basic Settings")]
@@ -26,6 +35,11 @@ namespace Base
             public PhysicsType PhysicsType = PhysicsType.Transform;
             [FoldoutGroup("Advanced Settings")]
             public ControllerType ControllerType = ControllerType.Joystick;
+
+            private void Update()
+            {
+                PokeballText.SetText(PokeballCount.ToString());
+            }
 
             public void OnEnable()
             {
