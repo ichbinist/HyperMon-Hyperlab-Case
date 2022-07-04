@@ -8,6 +8,8 @@ public class PokemonRunnerController : MonoBehaviour
 {
     public UnityEvent OnGridSet = new UnityEvent();
 
+    public TMPro.TextMeshProUGUI PowerText;
+
     private void OnEnable()
     {
         OnGridSet.AddListener(SetPosition);

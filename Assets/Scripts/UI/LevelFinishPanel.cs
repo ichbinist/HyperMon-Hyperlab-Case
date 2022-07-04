@@ -2,27 +2,52 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
+
 public class LevelFinishPanel : BasePanel
 {
-    public UnityEngine.UI.Button LevelFinishButton;
+    public Button SuccessButton,FailButton;
+
+    public GameObject FailPanel, SuccessPanel;
     private void OnEnable()
     {
         if (!Managers.Instance) return;
-        LevelFinishButton.transform.localScale = Vector3.zero;
-        LevelManager.Instance.OnLevelFinished.AddListener(Activate);
-        SceneController.Instance.OnSceneLoaded.AddListener(Deactivate);
-        LevelFinishButton.onClick.AddListener(() => GameManager.Instance.CompleteStage(true));
-        OnPanelDeactivated.AddListener(() => LevelFinishButton.transform.localScale = Vector3.zero);
-        OnPanelActivated.AddListener(() => LevelFinishButton.transform.DOScale(Vector3.one, 1f));
+        GameManager.Instance.OnGameFinishes.AddListener(FinishGameUIControl);
+        SuccessButton.onClick.AddListener(SuccessButtonClick);
+        FailButton.onClick.AddListener(FailButtonClick);
     }
 
     private void OnDisable()
     {
         if (!Managers.Instance) return;
-        LevelManager.Instance.OnLevelFinished.RemoveListener(Activate);
-        SceneController.Instance.OnSceneLoaded.RemoveListener(Deactivate);
-        LevelFinishButton.onClick.RemoveListener(() => GameManager.Instance.CompleteStage(true));
-        OnPanelDeactivated.RemoveListener(() => LevelFinishButton.transform.localScale = Vector3.zero);
-        OnPanelActivated.RemoveListener(() => LevelFinishButton.transform.DOScale(Vector3.one, 1f));
+        GameManager.Instance.OnGameFinishes.RemoveListener(FinishGameUIControl);
+        SuccessButton.onClick.RemoveListener(SuccessButtonClick);
+        FailButton.onClick.RemoveListener(FailButtonClick);
+    }
+
+    private void SuccessButtonClick()
+    {
+        LevelManager.Instance.LoadNextLevel();
+        FailPanel.SetActive(false);
+        SuccessPanel.SetActive(false);
+    }
+
+    private void FailButtonClick()
+    {
+        LevelManager.Instance.ReloadLevel();
+        FailPanel.SetActive(false);
+        SuccessPanel.SetActive(false);
+    }
+
+    private void FinishGameUIControl(bool check)
+    {
+        if (check)
+        {
+            SuccessPanel.SetActive(true);
+        }
+        else
+        {
+            FailPanel.SetActive(true);
+        }
     }
 }

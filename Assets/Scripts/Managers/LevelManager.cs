@@ -42,6 +42,7 @@ public class LevelManager : Singleton<LevelManager>
             CurrentLevel = Levels[PlayerPrefs.GetInt("LastLevel")];
         }
         SceneController.Instance.LoadLevel(CurrentLevel);
+        FinishLevel();
     }
 
     public void LoadNextLevel()

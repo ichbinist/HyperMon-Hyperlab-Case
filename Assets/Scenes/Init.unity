@@ -212,6 +212,9 @@ MonoBehaviour:
   - LevelType: 0
     LevelID: Level - 1
     BackgroundColor: {r: 0.972549, g: 0.77254903, b: 0.07058824, a: 1}
+  - LevelType: 0
+    LevelID: Level - 2
+    BackgroundColor: {r: 0.972549, g: 0.77254903, b: 0.07058824, a: 1}
   CurrentLevel:
     LevelType: 0
     LevelID: 
@@ -280,6 +283,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 590682badf5fba443803713786fd9a6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnArenaSet:
+    m_PersistentCalls:
+      m_Calls: []
   CurrentCharacter: {fileID: 0}
 --- !u!114 &113075793
 MonoBehaviour:
@@ -338,3 +344,7 @@ MonoBehaviour:
       PokemonImage: {fileID: 21300000, guid: 60dc76c4ccf744d428145fbb34fa14b2, type: 3}
       PokemonPrefab: {fileID: 4964066896396987770, guid: f5765750cf1df5d47a13520b2425867b, type: 3}
   CurrentPickedPokemons: 
+  EnemyPickedPokemon: {fileID: 0}
+  PlayerPickedPokemon: {fileID: 0}
+  PlayerScore: 0
+  EnemyScore: 0

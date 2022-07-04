@@ -9,15 +9,8 @@ public class GameManager : Singleton<GameManager>
 
     public void CompleteStage(bool state)
     {
-        if (state)
-        {
-            LevelManager.Instance.LoadNextLevel();
-        }
-        else
-        {
-            LevelManager.Instance.ReloadLevel();
-        }
-
+        OnGameFinishes.Invoke(state);    
     }
 }
+
 public class GameEvent : UnityEvent<bool> { }

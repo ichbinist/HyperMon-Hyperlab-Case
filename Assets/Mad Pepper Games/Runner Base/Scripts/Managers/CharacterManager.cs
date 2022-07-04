@@ -11,7 +11,6 @@ namespace Base
         {
             public UnityEvent OnArenaSet = new UnityEvent();
             //Character Manager
-
             public CharacterSettings CurrentCharacter;
         }
     }
